@@ -1,2 +1,2 @@
 # react_movieApp
-MovieApp (React)
+MovieApp Clone (React)
