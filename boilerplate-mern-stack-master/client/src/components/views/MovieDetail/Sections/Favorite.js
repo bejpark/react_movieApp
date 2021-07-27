@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Axios from 'axios'
+import {Button} from 'antd';
 
 function Favorite(props) {
     const movieId = props.movieId
@@ -19,8 +20,8 @@ function Favorite(props) {
     useEffect(() => {
         Axios.post('/api/favorite/favoriteNumber', variables)
             .then(response => {
+                setFavoriteNumber(response.data.favoriteNumber)
                 if (response.data.success) {
-                    setFavoriteNumber(response.data.favoriteNumber)
                 } else {
                     alert('숫자 정보를 가져오는데 실패했습니다.')
                 }
@@ -62,7 +63,7 @@ function Favorite(props) {
     }
     return ( 
         <div>
-            <button onClick={onClickFavorite}>{Favorited? "Not Favorite" : "Add to Favorite"}{FavoriteNumber}</button>
+            <Button onClick={onClickFavorite}>{Favorited? "Not Favorite" : "Add to Favorite"} {FavoriteNumber}</Button>
         </div>
 
     )
